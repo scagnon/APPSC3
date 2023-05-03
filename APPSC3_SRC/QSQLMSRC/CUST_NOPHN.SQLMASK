@@ -1,0 +1,16 @@
+      /*%METADATA                                                     */
+      /* %TEXT CUST_NOPHN_IF_NOT_PRIVILEGED                           */
+      /*%EMETADATA                                                    */
+
+
+  CREATE MASK CUST_NOPHN_if_not_privileged ON customer AS c
+    FOR COLUMN CUPHONE
+    RETURN  CASE
+  WHEN
+   C.CUCAT  <> 'X ' THEN C.CUPHONE
+
+ WHEN
+    PRIVILEGE = 1 THEN C.CUPHONE
+  ELSE '0123456789'
+  END
+  ENABLE

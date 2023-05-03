@@ -1,0 +1,22 @@
+      /*%METADATA                                                     */
+      /* %TEXT CUST_NONAME_IF_NOT_PRIVILEGED                          */
+      /*%EMETADATA                                                    */
+-- Exemples 1 - Test group
+-- WHEN QSYS2.VERIFY_GROUP_FOR_USER ( SESSION_USER , 'DBADMIN'  )
+-- Exemples 2 - Check if user is *ALLOBJ
+-- when QSYS2.COALESCE (( SELECT 1 FROM  FROM QSYS2.USER_INFO
+-- WHERE SPECIAL_AUTHORITIES LIKE '%*ALLOBJ%'
+--       and AUTHORIZATION_NAME = SESSION_USER
+--  FETCH FIRST ROW  ONLY ) , 0 ) = 1
+
+  CREATE MASK CUST_NONAM_if_not_privileged ON customer AS c
+    FOR COLUMN CUSTNM
+    RETURN  CASE
+  WHEN
+   C.CUCAT  <> 'X ' THEN C.CUSTNM
+
+ WHEN
+    PRIVILEGE = 1 THEN C.CUSTNM
+  ELSE '**********'
+  END
+  ENABLE
