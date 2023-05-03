@@ -1,0 +1,20 @@
+{
+    "description": "From an IBMi Application",
+    "version": "0.0.1",
+    "includePath": [
+        "APPSC3_SRC/QPROTOSRC"
+    ],
+    "repository": "git@github.com:scagnon/APPSC3.git",
+    "objlib": "&verlibappsc3",
+    "curlib": "*CRTDFT",
+    "extensions": {
+        "arcad": {
+            "code": "APPSC3",
+            "libraryPrefix": "SC3",
+            "iasp": "*SYSBAS",
+            "validated": true
+        }
+    },
+    "buildCommand": "elias compile {branch}",
+    "compileCommand": "elias compile {branch} -f {filename}"
+}
