@@ -1,0 +1,7 @@
+      /*%METADATA                                                     */
+      /* %TEXT Check super user                                       */
+      /*%EMETADATA                                                    */
+ create variable privileged_user for system name privilege smallint default 0;
+ label on variable privileged_user is ' value 1 = priviliged user';
+
+

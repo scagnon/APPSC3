@@ -1,0 +1,29 @@
+      /*%METADATA                                                     */
+      /* %TEXT Prevent update mask                                    */
+      /*%EMETADATA                                                    */
+
+create trigger CUS700_CUSTOMER_PREVENT_UPDATE_MASK
+BEFORE UPDATE ON CUSTOMER
+   REFERENCING OLD AS O
+   NEW AS N
+   FOR EACH ROW
+   MODE DB2ROW
+   -- If V7R2 or higher for SQLMASK
+   -- V7R2 secured
+   Program Name CUS700
+   SET OPTION  ALWBLK = *ALLREAD ,
+   ALWCPYDTA = *OPTIMIZE ,
+   COMMIT = *NONE ,
+   CLOSQLCSR = *ENDACTGRP ,
+   DECRESULT = (31, 31, 00) ,
+   DYNDFTCOL = *NO ,
+   DYNUSRPRF = *OWNER ,
+   SRTSEQ = *HEX
+ WHEN ( N.CUSTNM = '**********' )
+ BEGIN
+   SET N.CUSTNM = O.CUSTNM;
+   SET N.CULINE1 = O.CULINE1;
+   SET N.CUmail = O.CUmail;
+   SET N.CUphone = O.CUphone;
+ END;
+

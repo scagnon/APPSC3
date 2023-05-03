@@ -1,0 +1,14 @@
+      /*%METADATA                                                     */
+      /* %TEXT Transfrom num ISO to date                              */
+      /*%EMETADATA                                                    */
+     CREATE FUNCTION ISO_Num_To_Date (
+       DECIMAL(8, 0) )
+       RETURNS DATE
+       LANGUAGE RPGLE
+       SPECIFIC ISOTODATE
+       DETERMINISTIC
+       NO SQL
+       RETURNS NULL ON NULL INPUT
+       NO EXTERNAL ACTION
+       EXTERNAL NAME DAT001
+       PARAMETER STYLE SQL ;
