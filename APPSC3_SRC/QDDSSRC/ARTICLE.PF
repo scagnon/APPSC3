@@ -37,3 +37,4 @@
                   ARMODID       10          TEXT('LAS MOD BY')
                                             COLHDG('LAST' 'MODIF.' 'BY')
                   ARDEL     R               REFFLD(DLCODE)
+                  ARDEL2    R               REFFLD(DLCODE)
